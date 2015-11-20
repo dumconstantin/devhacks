@@ -1,6 +1,8 @@
 FROM node:latest
 
-ENTRYPOINT ["node", "dist/server/entry.js"]
 WORKDIR /app
-COPY . /app
+COPY dist/ /app/
+COPY package.json /app/
+RUN npm install --production
 
+ENTRYPOINT ["node", "server/entry.js"]
